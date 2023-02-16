@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(Prueba2 VERSION 0.1 LANGUAGES CXX)
+project(Actividad_2_Clases_Objetos VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -17,34 +17,38 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        neurona.h
+        neurona.cpp
+        adminneuronas.h
+        adminneuronas.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(Prueba2
+    qt_add_executable(Actividad_2_Clases_Objetos
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
     )
 # Define target properties for Android with Qt 6 as:
-#    set_property(TARGET Prueba2 APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
+#    set_property(TARGET Actividad_2_Clases_Objetos APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
 #                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
 # For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
 else()
     if(ANDROID)
-        add_library(Prueba2 SHARED
+        add_library(Actividad_2_Clases_Objetos SHARED
             ${PROJECT_SOURCES}
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
-        add_executable(Prueba2
+        add_executable(Actividad_2_Clases_Objetos
             ${PROJECT_SOURCES}
         )
     endif()
 endif()
 
-target_link_libraries(Prueba2 PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(Actividad_2_Clases_Objetos PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
-set_target_properties(Prueba2 PROPERTIES
+set_target_properties(Actividad_2_Clases_Objetos PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -52,10 +56,10 @@ set_target_properties(Prueba2 PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-install(TARGETS Prueba2
+install(TARGETS Actividad_2_Clases_Objetos
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(Prueba2)
+    qt_finalize_executable(Actividad_2_Clases_Objetos)
 endif()
